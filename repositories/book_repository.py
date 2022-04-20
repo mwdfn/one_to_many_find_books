@@ -17,10 +17,13 @@ def select_all():
     sql = "SELECT * FROM books"
     results = run_sql(sql)
 
+    
     for row in results:
         author = author_repository.select(row['author_id'])
-        book = Book(row['title'], author, row['genre'], row['id'])
+        book = Book(row['title'], row['genre'],author, row['id'])
         books.append(book)
+   
+ 
     return books
 
 def select(id):
